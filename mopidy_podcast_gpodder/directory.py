@@ -57,21 +57,22 @@ class gPodderDirectory(PodcastDirectory):
     def browse(self, tag):
         tag = tag.strip('/')
         if not tag:
-            results = self.request(self.tags_url.format(count=10))
+            results = self.request(self.tags_url, count=10)
             return _to_directory_refs(results)
         else:
-            results = self.request(self.tag_url.format(tag=tag, count=10))
+            results = self.request(self.tag_url, tag=tag, count=10)
             return _to_podcast_refs(results)
 
     def search(self, terms=None, attribute=None):
         if not terms:
             return []
         results = self.request(self.search_url, params={
-            'q': '+'.join(terms),
+            'q': '+'.join(terms)
         })
         return _to_podcast_refs(results)
 
-    def request(self, url, params=None):
+    def request(self, url, params=None, **kwargs):
+        url = url.format(**kwargs)
         timeout = self.config['timeout']
         response = self.session.get(url, params=params, timeout=timeout)
         return response.json()
