@@ -15,64 +15,55 @@ SEARCH_PATH = '/search.json'
 logger = logging.getLogger(__name__)
 
 
-def _to_directory_refs(results):
-    refs = []
-    for result in results:
-        try:
-            refs.append(Ref.directory(uri=result['tag'], name=result['tag']))
-        except Exception as e:
-            logger.error('gPodder format error: %r %r', e, result)
-    return refs
-
-
-def _to_podcast_refs(results):
-    # TODO: try to filter duplicates
-    refs = []
-    for result in results:
-        try:
-            refs.append(Ref.podcast(uri=result['url'], name=result['title']))
-        except Exception as e:
-            logger.error('gPodder format error: %r %r', e, result)
-    return refs
-
-
-class gPodderDirectory(PodcastDirectory):
+class GPodderDirectory(PodcastDirectory):
 
     name = 'gpodder'
 
-    genre = None
-
     def __init__(self, backend):
-        super(gPodderDirectory, self).__init__(backend)
-        self.label = self.config['label']
-        self.session = requests.Session()
+        super(GPodderDirectory, self).__init__(backend)
+        self.label = self.config['display_name']
         self.tag_url = urljoin(self.config['base_url'], TAG_PATH)
         self.tags_url = urljoin(self.config['base_url'], TAGS_PATH)
         self.search_url = urljoin(self.config['base_url'], SEARCH_PATH)
+        self.session = requests.Session()
 
     @property
     def config(self):
         return self.backend.config['podcast-gpodder']
 
-    def browse(self, tag):
-        tag = tag.strip('/')
-        if not tag:
-            results = self.request(self.tags_url, count=10)
-            return _to_directory_refs(results)
+    def browse(self, uri):
+        if not uri or uri == '/':
+            count = self.config['top_tags_count']
+            return self._get_tags(self.tags_url, count=count)
+        elif uri.startswith('/'):
+            tag = uri.strip('/')
+            count = self.config['podcasts_count']
+            return self._get_podcasts(self.tag_url, tag=tag, count=count)
         else:
-            results = self.request(self.tag_url, tag=tag, count=10)
-            return _to_podcast_refs(results)
+            return super(GPodderDirectory, self).browse(uri)
 
-    def search(self, terms=None, attribute=None):
-        if not terms:
+    def search(self, terms=None, attribute=None, limit=None):
+        if not terms or attribute:
             return []
-        results = self.request(self.search_url, params={
-            'q': '+'.join(terms)
-        })
-        return _to_podcast_refs(results)
+        refs = self._get_podcasts(self.search_url, query='+'.join(terms))
+        return refs[:limit]
 
-    def request(self, url, params=None, **kwargs):
-        url = url.format(**kwargs)
-        timeout = self.config['timeout']
-        response = self.session.get(url, params=params, timeout=timeout)
+    def _get_tags(self, url, **kwargs):
+        refs = []
+        for item in self._request(url, **kwargs):
+            refs.append(Ref.directory(uri=item['tag'], name=item['tag']))
+        return refs
+
+    def _get_podcasts(self, url, **kwargs):
+        refs = []
+        for item in self._request(url, **kwargs):
+            refs.append(Ref.podcast(uri=item['url'], name=item['title']))
+        return refs
+
+    def _request(self, url, query=None, **kwargs):
+        response = self.session.get(url.format(**kwargs), params={
+            'q': query
+        }, timeout=self.config['timeout'])
+        logger.debug('Retrieving %s took %s', response.url, response.elapsed)
+        response.raise_for_status()
         return response.json()

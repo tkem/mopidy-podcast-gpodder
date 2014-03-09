@@ -1,7 +1,7 @@
-Mopidy-Podcast-gPodder
+Mopidy-Podcast-GPodder
 ========================================================================
 
-Mopidy-Podcast-gPodder is a Mopidy-Podcast_ extension for searching
+Mopidy-Podcast-GPodder is a Mopidy-Podcast_ extension for searching
 and browsing Podcasts on `gpodder.net`_.
 
 
@@ -24,19 +24,19 @@ Project Resources
 - `Issue Tracker`_
 - `Change Log`_
 
-.. image:: https://pypip.in/v/Mopidy-Podcast-gPodder/badge.png
-    :target: https://pypi.python.org/pypi/Mopidy-Podcast-gPodder/
+.. image:: https://pypip.in/v/Mopidy-Podcast-GPodder/badge.png
+    :target: https://pypi.python.org/pypi/Mopidy-Podcast-GPodder/
     :alt: Latest PyPI version
 
-.. image:: https://pypip.in/d/Mopidy-Podcast-gPodder/badge.png
-    :target: https://pypi.python.org/pypi/Mopidy-Podcast-gPodder/
+.. image:: https://pypip.in/d/Mopidy-Podcast-GPodder/badge.png
+    :target: https://pypi.python.org/pypi/Mopidy-Podcast-GPodder/
     :alt: Number of PyPI downloads
 
 
 License
 ------------------------------------------------------------------------
 
-Mopidy-Podcast-gPodder is Copyright 2014 Thomas Kemmer.
+Mopidy-Podcast-GPodder is Copyright 2014 Thomas Kemmer.
 
 Licensed under the `Apache License, Version 2.0`_.
 

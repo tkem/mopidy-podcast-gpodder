@@ -11,7 +11,7 @@ def get_version(filename):
 
 
 setup(
-    name='Mopidy-Podcast-gPodder',
+    name='Mopidy-Podcast-GPodder',
     version=get_version('mopidy_podcast_gpodder/__init__.py'),
     url='https://github.com/tkem/mopidy-podcast-gpodder',
     license='Apache License, Version 2.0',

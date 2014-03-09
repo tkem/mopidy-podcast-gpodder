@@ -7,7 +7,7 @@ __version__ = '0.0.1'
 
 class Extension(ext.Extension):
 
-    dist_name = 'Mopidy-Podcast-gPodder'
+    dist_name = 'Mopidy-Podcast-GPodder'
     ext_name = 'podcast-gpodder'
     version = __version__
 
@@ -19,10 +19,12 @@ class Extension(ext.Extension):
     def get_config_schema(self):
         schema = super(Extension, self).get_config_schema()
         schema['base_url'] = config.String()
-        schema['label'] = config.String()
+        schema['display_name'] = config.String()
+        schema['top_tags_count'] = config.Integer(minimum=1)
+        schema['podcasts_count'] = config.Integer(minimum=1)
         schema['timeout'] = config.Integer(optional=True)
         return schema
 
     def setup(self, registry):
-        from .directory import gPodderDirectory
-        registry.add('podcast:directory', gPodderDirectory)
+        from .directory import GPodderDirectory
+        registry.add('podcast:directory', GPodderDirectory)

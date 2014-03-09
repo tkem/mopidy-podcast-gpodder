@@ -17,5 +17,7 @@ class ExtensionTest(unittest.TestCase):
         ext = Extension()
         schema = ext.get_config_schema()
         self.assertIn('base_url', schema)
-        self.assertIn('label', schema)
+        self.assertIn('display_name', schema)
+        self.assertIn('top_tags_count', schema)
+        self.assertIn('podcasts_count', schema)
         self.assertIn('timeout', schema)
