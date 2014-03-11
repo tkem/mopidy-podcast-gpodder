@@ -5,7 +5,7 @@ import requests
 
 from urlparse import urljoin
 
-from mopidy_podcast.directory import PodcastDirectory
+from mopidy_podcast.directory import PodcastDirectoryProvider
 from mopidy_podcast.models import Ref
 
 TAG_PATH = '/api/2/tag/{tag}/{count}.json'
@@ -15,7 +15,7 @@ SEARCH_PATH = '/search.json'
 logger = logging.getLogger(__name__)
 
 
-class GPodderDirectory(PodcastDirectory):
+class GPodderDirectory(PodcastDirectoryProvider):
 
     name = 'gpodder'
 
