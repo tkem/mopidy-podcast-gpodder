@@ -69,6 +69,7 @@ Licensed under the `Apache License, Version 2.0`_.
 
 .. _Mopidy-Podcast: https://github.com/tkem/mopidy-podcast
 .. _gpodder.net: http://gpodder.net
+.. _releases: https://github.com/tkem/mopidy-podcast-gpodder/releases
 .. _Source Code: https://github.com/tkem/mopidy-podcast-gpodder
 .. _Issue Tracker: https://github.com/tkem/mopidy-podcast-gpodder/issues/
 .. _Change Log: https://github.com/tkem/mopidy-podcast-gpodder/blob/master/Changes
