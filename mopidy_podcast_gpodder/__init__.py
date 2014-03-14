@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from mopidy import config, ext
 
-__version__ = '0.0.1'
+__version__ = '0.1.0'
 
 
 class Extension(ext.Extension):
@@ -18,8 +18,8 @@ class Extension(ext.Extension):
 
     def get_config_schema(self):
         schema = super(Extension, self).get_config_schema()
-        schema['base_url'] = config.String()
         schema['display_name'] = config.String()
+        schema['base_url'] = config.String()
         schema['top_tags_count'] = config.Integer(minimum=1)
         schema['podcasts_count'] = config.Integer(minimum=1)
         schema['timeout'] = config.Integer(optional=True)

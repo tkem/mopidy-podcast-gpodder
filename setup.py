@@ -11,13 +11,13 @@ def get_version(filename):
 
 
 setup(
-    name='Mopidy-Podcast-GPodder',
+    name='Mopidy-Podcast-gpodder.net',
     version=get_version('mopidy_podcast_gpodder/__init__.py'),
     url='https://github.com/tkem/mopidy-podcast-gpodder',
     license='Apache License, Version 2.0',
     author='Thomas Kemmer',
     author_email='tkemmer@computer.org',
-    description='Mopidy-Podcast extension for searching and browsing Podcasts on gpodder.net',  # noqa
+    description='Mopidy-Podcast extension for searching and browsing podcasts on gpodder.net',  # noqa
     long_description=open('README.rst').read(),
     packages=find_packages(exclude=['tests', 'tests.*']),
     zip_safe=False,
