@@ -20,11 +20,14 @@ Mopidy-Podcast-gpodder.net releases_.
 Configuration
 ------------------------------------------------------------------------
 
-Configuration items are still subject to change at this point, so be
-warned::
+To enable Mopidy-Podcast-gpodder.net, add ``gpodder`` to the list
+of configured ``directories`` in the ``[podcast]`` section::
 
     [podcast]
     directories = feeds, gpodder
+
+Other configuration items are still subject to change at this point, so be
+warned before trying any of these::
 
     [podcast-gpodder]
     enabled = true
