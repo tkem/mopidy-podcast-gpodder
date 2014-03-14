@@ -23,6 +23,9 @@ Configuration
 Configuration items are still subject to change at this point, so be
 warned::
 
+    [podcast]
+    directories = feeds, gpodder
+
     [podcast-gpodder]
     enabled = true
 
