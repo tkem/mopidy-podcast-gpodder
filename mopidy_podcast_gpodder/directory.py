@@ -47,7 +47,7 @@ class GPodderDirectory(PodcastDirectory):
     def search(self, terms=None, attribute=None, type=None, limit=None):
         if not terms or attribute or type == Ref.EPISODE:
             return None
-        refs = self._get_podcasts(self.search_url, query=' '.join(terms))
+        refs = self._get_podcasts(self._search_url, query=' '.join(terms))
         return refs[:limit]
 
     def _get_tags(self, url, **kwargs):
