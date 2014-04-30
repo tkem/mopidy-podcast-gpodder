@@ -8,7 +8,7 @@ searching and browsing podcasts on `gpodder.net`_.
 Installation
 ------------------------------------------------------------------------
 
-First, make sure you have Mopidy-Podcast version 0.4.0 or later
+First, make sure you have Mopidy-Podcast version 0.5.0 or later
 installed.  Then Mopidy-Podcast-gpodder.net can be installed using pip
 by running::
 
@@ -24,19 +24,19 @@ Mopidy-Podcast-gpodder.net releases_.
 Project Resources
 ------------------------------------------------------------------------
 
+.. image:: http://img.shields.io/pypi/v/Mopidy-Podcast-gpodder.net.svg
+    :target: https://pypi.python.org/pypi/Mopidy-Podcast-gpodder.net/
+    :alt: Latest PyPI version
+
+.. image:: http://img.shields.io/pypi/dm/Mopidy-Podcast-gpodder.net.svg
+    :target: https://pypi.python.org/pypi/Mopidy-Podcast-gpodder.net/
+    :alt: Number of PyPI downloads
+
 - `Documentation`_
 - `Issue Tracker`_
 - `Source Code`_
 - `Change Log`_
 - `Development Snapshot`_
-
-.. image:: https://pypip.in/v/Mopidy-Podcast-gpodder.net/badge.png
-    :target: https://pypi.python.org/pypi/Mopidy-Podcast-gpodder.net/
-    :alt: Latest PyPI version
-
-.. image:: https://pypip.in/d/Mopidy-Podcast-gpodder.net/badge.png
-    :target: https://pypi.python.org/pypi/Mopidy-Podcast-gpodder.net/
-    :alt: Number of PyPI downloads
 
 
 License
