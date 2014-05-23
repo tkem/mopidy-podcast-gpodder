@@ -1,8 +1,10 @@
 Revision history for Mopidy-Podcast-gpodder.net
 
-0.3.0   unreleased
+1.0.0   2014-05-24
 
-        - Upgrade to Mopidy-Podcast v0.5.0 Directory API.
+        - Upgrade to Mopidy-Podcast v1.0.0 directory API.
+
+        - Support custom formatting of search/browse results.
 
 0.2.0   2014-04-11
 

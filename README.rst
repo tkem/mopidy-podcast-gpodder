@@ -2,7 +2,7 @@ Mopidy-Podcast-gpodder.net
 ========================================================================
 
 Mopidy-Podcast-gpodder.net is a Mopidy-Podcast_ extension for
-searching and browsing podcasts on `gpodder.net`_.
+searching and browsing podcasts using the `gpodder.net`_ Web service.
 
 
 Installation
@@ -26,7 +26,7 @@ Configuration
 
 The default configuration contains everything to get you up and
 running, and will usually require only a few modifications to match
-personal needs::
+personal preferences::
 
     [podcast-gpodder]
     enabled = true

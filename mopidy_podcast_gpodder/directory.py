@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 
 import logging
 import requests
+import string
 import urllib2
 import urlparse
 
@@ -15,6 +16,18 @@ _TAGS_PATH = '/api/2/tags/{count}.json'
 _SEARCH_PATH = '/search.json'
 
 logger = logging.getLogger(__name__)
+
+
+class Formatter(string.Formatter):
+
+    def get_value(self, key, args, kwargs):
+        try:
+            return super(Formatter, self).get_value(key, args, kwargs)
+        except KeyError:
+            return None
+
+
+formatter = Formatter()
 
 
 class GPodderDirectory(PodcastDirectory):
@@ -51,28 +64,29 @@ class GPodderDirectory(PodcastDirectory):
     def _tags(self, url, limit=None, **kwargs):
         refs = []
         count = limit or self._config['count']
+        format = self._config['tag_format']
         for item in self._request(url, limit=limit, count=count, **kwargs):
             uri = urllib2.quote(item['tag'].encode('utf-8'))
-            name = self._config['tag_format'].format(**item)
+            name = formatter.vformat(format, [], item)
             refs.append(Ref.directory(uri=uri, name=name))
         return refs
 
     def _podcasts(self, url, limit=None, **kwargs):
         refs = []
         count = limit or self._config['count']
+        format = self._config['podcast_format']
         for item in self._request(url, limit=limit, count=count, **kwargs):
             uri, _ = urlparse.urldefrag(item['url'])
-            name = self._config['podcast_format'].format(**item)
+            name = formatter.vformat(format, [], item)
             refs.append(Ref.podcast(uri=uri, name=name))
         return refs
 
     def _request(self, url, query=None, limit=None, **kwargs):
-        logger.warn('%r, %r', url, kwargs)
         response = self._session.get(
             url.format(**kwargs),
             params={'q': query},
             timeout=self._config['timeout']
         )
-        logger.debug('Retrieving %s took %s', response.url, response.elapsed)
         response.raise_for_status()
+        logger.debug('Retrieving %s took %s', response.url, response.elapsed)
         return response.json()[:limit]
