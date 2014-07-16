@@ -17,8 +17,12 @@ running::
 After a restart, Mopidy-Podcast will pick up the installed extension
 automatically.
 
-You can also download and install Debian/Ubuntu packages for
-Mopidy-Podcast-gpodder.net releases_.
+You can also install Debian/Ubuntu packages from the `APT repository`_::
+
+    wget -q -O - http://apt.kemmer.co.at/tkem.gpg | sudo apt-key add -
+    sudo wget -q -O /etc/apt/sources.list.d/tkem.list http://apt.kemmer.co.at/tkem.list
+    sudo apt-get update
+    sudo apt-get install mopidy-podcast-gpodder
 
 
 Configuration
@@ -79,8 +83,7 @@ Licensed under the `Apache License, Version 2.0`_.
 
 .. _Mopidy-Podcast: https://github.com/tkem/mopidy-podcast
 .. _gpodder.net: http://gpodder.net
-
-.. _releases: https://github.com/tkem/mopidy-podcast-gpodder/releases
+.. _APT repository: http://apt.kemmer.co.at/
 .. _Issue Tracker: https://github.com/tkem/mopidy-podcast-gpodder/issues/
 .. _Source Code: https://github.com/tkem/mopidy-podcast-gpodder
 .. _Change Log: https://raw.github.com/tkem/mopidy-podcast-gpodder/master/Changes
