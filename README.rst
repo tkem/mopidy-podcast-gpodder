@@ -1,28 +1,29 @@
 Mopidy-Podcast-gpodder.net
 ========================================================================
 
-Mopidy-Podcast-gpodder.net is a Mopidy-Podcast_ extension for
+Mopidy-Podcast-gpodder.net is a Mopidy-Podcast_ v1.x extension for
 searching and browsing podcasts using the `gpodder.net`_ Web service.
+
+Status
+------------------------------------------------------------------------
+
+`gpodder.net`_ support has been an experiment and a proof of concept
+to test out the Mopidy-Podcast v1.0 API for alternate podcast
+directory support more than anything else.
+
+At this point in time, it is not being actively worked on, and is no
+longer compatible with Mopidy-Podcast v2.0.  If you are interested in
+fixing this please do get in touch or start sending pull requests :-)
 
 
 Installation
 ------------------------------------------------------------------------
 
-First, make sure you have Mopidy-Podcast version 1.0.0 or later
-installed.  Then Mopidy-Podcast-gpodder.net can be installed by
-running::
+First, make sure you have Mopidy-Podcast version 1.x installed.  Note
+that this extension is *not* compatible with Mopidy-Podcast 2.0 and
+later.  Then Mopidy-Podcast-gpodder.net can be installed by running::
 
     pip install Mopidy-Podcast-gpodder.net
-
-After a restart, Mopidy-Podcast will pick up the installed extension
-automatically.
-
-You can also install Debian/Ubuntu packages from the `APT repository`_::
-
-    wget -q -O - http://apt.kemmer.co.at/tkem.gpg | sudo apt-key add -
-    sudo wget -q -O /etc/apt/sources.list.d/tkem.list http://apt.kemmer.co.at/tkem.list
-    sudo apt-get update
-    sudo apt-get install mopidy-podcast-gpodder
 
 
 Configuration
